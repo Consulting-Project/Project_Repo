@@ -7,6 +7,23 @@ output: github_document
 
 ### Loading Data
 ```{r}
+data0 <- read.csv("/Users/hannavenera/Documents/School/Pacific Lutheran University/Classes/Classes 2020-2021/Spring 2021/STAT 348/Consulting Project/share-of-calories-from-animal-protein-vs-gdp-per-capita.csv", header = TRUE)
+dim(data0)
+str(data0)
+```
+
+### Converting Factor Variables
+```{r}
+data1 <- data0
+data1$Entity <- factor(data1$Entity)
+data1$Code <- factor(data1$Code)
+data1$Continent <- factor(data1$Continent)
+str(data1)
+```
+
+### Removing Missing Values (NA)
+```{r}
 
 ```
 
+### 
