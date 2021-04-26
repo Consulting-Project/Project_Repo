@@ -3,7 +3,7 @@ title: "Consulting Project"
 output: github_document
 ---
 
-## Document for Data Cleaning 
+# Document for Data Cleaning 
 
 ### Loading Data
 ```{r}
@@ -12,13 +12,31 @@ dim(data0)
 str(data0)
 ```
 
-### Converting Factor Variables
+### Converting Factor Variables and Fixing Variable Names
 ```{r}
 data1 <- data0
-data1$Entity <- factor(data1$Entity)
+# changing entity to country
+data1$Country <- factor(data1$Entity)
+# country code
 data1$Code <- factor(data1$Code)
+# continent as factor
 data1$Continent <- factor(data1$Continent)
-str(data1)
+# percent of total calories that are animal protein
+data1$PercentCal <- data1$Share.of.calories.from.animal.protein..FAO..2017..
+# GDP per capita
+data1$GDP <- data1$GDP.per.capita
+# total population
+data1$Pop <- data1$Total.population..Gapminder..HYDE...UN.
+# redefining data
+data2 <- data1[,-c(1,4,5,6,7)]
+str(data2)
+```
+
+### Assigning a Continent to Each Measurement
+```{r}
+table(data1$Continent)
+# only country measurements in year 2015 have a continent category
+
 ```
 
 ### Removing Missing Values (NA)
@@ -26,4 +44,8 @@ str(data1)
 
 ```
 
-### 
+### Isolating Data to Countries of Interest
+```{r}
+
+```
+
