@@ -1,0 +1,12 @@
+---
+title: "Consulting Project"
+output: html_document
+---
+
+## Document for Data Cleaning 
+
+### Loading Data
+```{r}
+
+```
+
