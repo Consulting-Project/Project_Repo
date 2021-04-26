@@ -24,7 +24,9 @@ data1$Continent <- factor(data1$Continent)
 # percent of total calories that are animal protein
 data1$PercentCal <- data1$Share.of.calories.from.animal.protein..FAO..2017..
 # GDP per capita
-data1$GDP <- data1$GDP.per.capita
+data1$GDPperCap <- data1$GDP.per.capita
+# GDP
+data1$GDP <- data1$GDP.per.capita*data1$Total.population..Gapminder..HYDE...UN.
 # total population
 data1$Pop <- data1$Total.population..Gapminder..HYDE...UN.
 # redefining data
@@ -34,7 +36,7 @@ str(data2)
 
 ### Assigning a Continent to Each Measurement
 ```{r}
-table(data1$Continent)
+table(data2$Continent)
 # only country measurements in year 2015 have a continent category
 
 ```
