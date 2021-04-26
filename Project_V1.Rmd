@@ -1,6 +1,6 @@
 ---
 title: "Consulting Project"
-output: html_document
+output: github_document
 ---
 
 ## Document for Data Cleaning 
