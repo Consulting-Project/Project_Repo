@@ -48,6 +48,5 @@ table(data2$Continent)
 
 ### Isolating Data to Countries of Interest
 ```{r}
-Africa
 ```
 
