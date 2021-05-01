@@ -34,19 +34,25 @@ data2 <- data1[,-c(1,4,5,6,7)]
 str(data2)
 ```
 
-### Assigning a Continent to Each Measurement
-```{r}
-table(data2$Continent)
-# only country measurements in year 2015 have a continent category
-
-```
-
 ### Removing Missing Values (NA)
 ```{r}
-
+data3 <- na.omit(data2)
+table(data3$Country)
 ```
 
 ### Isolating Data to Countries of Interest
 ```{r}
+data4 <- subset(data3, Country == "Gabon" | Country == "Botswana" | Country == "Mauritius" | Country == "Kuwait" | Country == "United Arab Emirates" | Country == "Saudi Arabia" | Country == "Norway" | Country == "Switzerland" | Country == "Ireland" | Country == "United States" | Country == "Canada" | Country == "Trinidad and Tobago" | Country == "Venezuela" | Country == "Chile" | Country == "Argentina" | Country == "Hong Kong" | Country == "Taiwan" | Country == "Japan")
+data4$Country <- factor(data4$Country)
+table(data4$Country)
+View(data4)
 ```
+
+### Assigning a Continent to Each Measurement
+```{r}
+
+
+```
+
+
 
