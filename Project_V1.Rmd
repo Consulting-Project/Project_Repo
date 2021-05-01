@@ -19,8 +19,6 @@ data1 <- data0
 data1$Country <- factor(data1$Entity)
 # country code
 data1$Code <- factor(data1$Code)
-# # continent as factor
-# data1$Continent <- factor(data1$Continent)
 # percent of total calories that are animal protein
 data1$PercentCal <- data1$Share.of.calories.from.animal.protein..FAO..2017..
 # GDP per capita
@@ -37,7 +35,6 @@ str(data2)
 ### Removing Missing Values (NA)
 ```{r}
 data3 <- na.omit(data2)
-# table(data3$Country)
 ```
 
 ### Isolating Data to Countries of Interest
@@ -45,7 +42,6 @@ data3 <- na.omit(data2)
 data4 <- subset(data3, Country == "Gabon" | Country == "Botswana" | Country == "Mauritius" | Country == "Kuwait" | Country == "United Arab Emirates" | Country == "Saudi Arabia" | Country == "Norway" | Country == "Switzerland" | Country == "Ireland" | Country == "United States" | Country == "Canada" | Country == "Trinidad and Tobago" | Country == "Venezuela" | Country == "Chile" | Country == "Argentina" | Country == "Hong Kong" | Country == "Taiwan" | Country == "Japan")
 data4$Country <- factor(data4$Country)
 table(data4$Country)
-# View(data4)
 ```
 
 ### Assigning a Continent to Each Measurement
@@ -63,9 +59,16 @@ data5$Continent[data5$Country == "United States" | data5$Country == "Canada" | d
 data5$Continent[data5$Country == "Argentina" | data5$Country == "Chile" | data5$Country == "Venezuela"] <- "South America"
 # Adding Eastern Asia
 data5$Continent[data5$Country == "Hong Kong" | data5$Country == "Taiwan" | data5$Country == "Japan"] <- "Eastern Asia"
-# View(data5)
+
+# convert Continent to factor variable
+data5$Continent <- factor(data5$Continent)
 table(data5$Continent)
 ```
 
-
+### Final Data (as of 5/1)
+```{r}
+FinalData <- data5
+str(FinalData)
+dim(FinalData)
+```
 
