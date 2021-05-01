@@ -19,8 +19,8 @@ data1 <- data0
 data1$Country <- factor(data1$Entity)
 # country code
 data1$Code <- factor(data1$Code)
-# continent as factor
-data1$Continent <- factor(data1$Continent)
+# # continent as factor
+# data1$Continent <- factor(data1$Continent)
 # percent of total calories that are animal protein
 data1$PercentCal <- data1$Share.of.calories.from.animal.protein..FAO..2017..
 # GDP per capita
@@ -37,7 +37,7 @@ str(data2)
 ### Removing Missing Values (NA)
 ```{r}
 data3 <- na.omit(data2)
-table(data3$Country)
+# table(data3$Country)
 ```
 
 ### Isolating Data to Countries of Interest
@@ -45,13 +45,26 @@ table(data3$Country)
 data4 <- subset(data3, Country == "Gabon" | Country == "Botswana" | Country == "Mauritius" | Country == "Kuwait" | Country == "United Arab Emirates" | Country == "Saudi Arabia" | Country == "Norway" | Country == "Switzerland" | Country == "Ireland" | Country == "United States" | Country == "Canada" | Country == "Trinidad and Tobago" | Country == "Venezuela" | Country == "Chile" | Country == "Argentina" | Country == "Hong Kong" | Country == "Taiwan" | Country == "Japan")
 data4$Country <- factor(data4$Country)
 table(data4$Country)
-View(data4)
+# View(data4)
 ```
 
 ### Assigning a Continent to Each Measurement
 ```{r}
-
-
+data5 <- data4
+# Adding Africa
+data5$Continent[data5$Country == "Botswana" | data5$Country == "Mauritius" | data5$Country == "Gabon"] <- "Africa"
+# Adding Middle East
+data5$Continent[data5$Country == "United Arab Emirates" | data5$Country == "Kuwait" | data5$Country == "Saudi Arabia"] <- "Middle East"
+# Adding Europe
+data5$Continent[data5$Country == "Ireland" | data5$Country == "Norway" | data5$Country == "Switzerland"] <- "Europe"
+# Adding North America
+data5$Continent[data5$Country == "United States" | data5$Country == "Canada" | data5$Country == "Trinidad and Tobago"] <- "North America"
+# Adding South America
+data5$Continent[data5$Country == "Argentina" | data5$Country == "Chile" | data5$Country == "Venezuela"] <- "South America"
+# Adding Eastern Asia
+data5$Continent[data5$Country == "Hong Kong" | data5$Country == "Taiwan" | data5$Country == "Japan"] <- "Eastern Asia"
+# View(data5)
+table(data5$Continent)
 ```
 
 
