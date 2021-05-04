@@ -74,7 +74,16 @@ dim(FinalData)
 
 ### Visualizations 
 ```{r}
+library(ggplot2)
 ggplot(FinalData, aes(x = GDP, y = PercentCal, color = Continent)) + geom_point(alpha = .5) + ylab("Share of Calories from Animal Protein") + ggtitle("GDP and Percentage of Total Calories Attributed to Animal Protein") + theme_bw()
 ggplot(FinalData, aes(x = GDP, y = PercentCal, color = Continent)) + geom_point(alpha = .5) + xlim(0, 5.0e12) + ylab("Share of Calories from Animal Protein") + ggtitle("GDP and Percentage of Total Calories Attributed to Animal Protein") + theme_bw()
 ggplot(FinalData, aes(x = GDP, y = PercentCal, color = Continent)) + geom_point(alpha = .5) + xlim(0, 1e12) + ylab("Share of Calories from Animal Protein") + ggtitle("GDP and Percentage of Total Calories Attributed to Animal Protein") + theme_bw()
+# Snapshot of 2013 Percent Calorie intake of animal protein for each country
+vizdata <- FinalData
+newdata <- which(vizdata$Year %in% c(2013))
+newviz <- vizdata[newdata, c(2, 3, 4, 5, 7)]
+sort(newviz$GDP)
+data0 <- newviz
+data0$Country <- factor(data0$Country, levels = c("United States", "Japan", "Canada", "Saudi Arabia", "Taiwan", "Argentina", "United Arab Emirates", "Venezuela", "Switzerland", "Norway", "Chile", "Hong Kong", "Kuwait", "Ireland", "Trinidad and Tobago", "Gabon", "Botswana", "Mauritius"))
+ggplot(data0, aes(Year, PercentCal)) + geom_bar(stat = "identity") + facet_wrap(~Country) + ggtitle("Percent Calories of Animal Protein by Country in 2013") + ylab("Percent Calories of Animal Protein") + xlab("2013") + theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
 ```
